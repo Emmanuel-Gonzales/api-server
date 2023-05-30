@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelizeDatabase, DataTypes) =>{
-  return sequelizeDatabase.define('food', {
+  return sequelizeDatabase.define('restaurant', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,7 +12,7 @@ module.exports = (sequelizeDatabase, DataTypes) =>{
     },
     group: {
       type: DataTypes.ENUM,
-      values: ['fruit', 'vegie', 'meat', 'grains'],
+      values: ['fast', 'fancy', 'dinner'],
     },
   });
 };
