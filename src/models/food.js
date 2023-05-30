@@ -13,6 +13,7 @@ module.exports = (sequelizeDatabase, DataTypes) =>{
     group: {
       type: DataTypes.ENUM,
       values: ['fruit', 'vegie', 'meat', 'grains'],
+      allowNull: false,
     },
   });
 };

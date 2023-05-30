@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const router = require('./routes/food');
 
 // ***** MIDDLEWARE *****
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 app.get('/', (req, res, next) => {
   res.status(200).send('Hola World');
 });
-
+app.use(router);
 
 
 
