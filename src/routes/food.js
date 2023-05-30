@@ -2,19 +2,19 @@
 
 const express = require('express');
 const router = express.Router();
-const { foodModel } = require('../models/index');
+const { food } = require('../models/index');
 
 router.get('/food', async (req, res) => {
-  let allFood = await foodModel.findAll();
+  let allFood = await food.read();
 
   res.status(200).send(allFood);
 });
 
 router.get('/food/:id', async (req, res) => {
-  let oneFood = await foodModel.findAll({where: {id: req.params.id}});;
+  let oneFood = await food.read(req.params.id);
 
   if (oneFood === null) {
-    console.log('Food item not found!');
+    console.log('Item not Found');
   } else {
     res.status(200).send(oneFood);
   }
@@ -22,25 +22,21 @@ router.get('/food/:id', async (req, res) => {
 
 
 router.post('/food', async (req, res) => {
-  let newFood = await foodModel.create(req.body);
+  let newFood = await food.create(req.body);
 
-  res.status(200).send(newFood);
+  res.status(201).send(newFood);
 });
 
 router.put('/food/:id', async (req, res) => {
-  let updatedFood = await foodModel.update(req.body, req.params.id );
+  let updatedFood = await food.update(req.body, req.params.id );
 
   res.status(200).send(updatedFood);
 });
 
 router.delete('/food/:id', async (req, res, next) => {
-  try {
-    await foodModel.delete({ where: {id: req.params.id}});
+  let deleted = food.delete(req.params.id);
 
-    res.status(200).send('deleted selected food item');
-  } catch (error) {
-    next(error);
-  }
+  res.status(200).send(deleted);
 });
 
 module.exports = router;
