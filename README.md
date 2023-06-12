@@ -40,3 +40,8 @@ This lab is ment to expand from lab 3 and add CRUD functionality
 #### UML
 
 ![UML](/assets/uml-04.png)
+
+#### TESTING PROOF
+
+![Test](./assets/labpr01.png)
+![lots of text when I test](./assets/lab04-2.png)
